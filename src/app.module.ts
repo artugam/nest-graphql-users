@@ -1,13 +1,10 @@
 //app.module.ts
-
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import {GraphQLModule} from '@nestjs/graphql';
 import {TypeOrmModule} from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
-import { UsersService } from './modules/users/users.service';
-import { UsersResolver } from './modules/users/users.resolver';
 
 @Module({
   imports: [
@@ -15,8 +12,8 @@ import { UsersResolver } from './modules/users/users.resolver';
       type       : 'mysql',
       host       : 'localhost',
       port       : 3306,
-      username   : 'root',
-      password   : '',
+      username   : 'username',
+      password   : 'password',
       database   : 'graphql-article',
       entities   : [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
@@ -31,6 +28,6 @@ import { UsersResolver } from './modules/users/users.resolver';
     UsersModule,
   ],
   controllers: [AppController],
-  providers: [AppService, UsersService, UsersResolver],
+  providers: [AppService],
 })
 export class AppModule {}
